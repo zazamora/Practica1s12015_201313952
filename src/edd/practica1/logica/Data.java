@@ -16,6 +16,22 @@ public class Data {
     private String imagen;
     private int ataque;
     private int puntos;
+    private String tipo;
+    private ListaEnlazada lista = new ListaEnlazada();
+    public ListaEnlazada getLista(){
+        return lista;
+    }
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
+    
+    public Data() {
+        
+    }
 
     public String getNombre() {
         return nombre;

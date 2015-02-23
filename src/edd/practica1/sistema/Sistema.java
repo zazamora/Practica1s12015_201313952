@@ -5,7 +5,7 @@
  */
 
 package edd.practica1.sistema;
-
+import edd.practica1.visual.*;
 /**
  *
  * @author Saul
@@ -17,6 +17,7 @@ public class Sistema {
      */
     public static void main(String[] args) {
         // Inicializa el menu principal.
+        new Inicio().setVisible(true);
     }
     
 }

@@ -23,7 +23,7 @@ public class ListaEnlazada {
         if(primero == null)
             primero = nuevo;
         else{
-            nuevo.setSiguiente(nuevo);
+            nuevo.setSiguiente(primero);
             primero = nuevo;
         }
     }
@@ -66,7 +66,28 @@ public class ListaEnlazada {
             temp.setSiguiente(aux.getSiguiente());
         }
     }
-    
+    //Imprimir datos de la lista
+    public void print() {
+    // if the list is empty, do nothing
+        if (!esVacia()) {
+          Nodo tmp = primero;
+          // iterates until the list is finished
+          while (tmp != null) {
+            System.out.println(tmp.getDatos().getNombre());
+            tmp = tmp.getSiguiente();
+          }
+        }else{
+            System.out.println("La lista esta vacia.");
+        }
+    }
+    //Devolver primero de la lista
+    public Nodo getPrimero(){
+        Nodo aux = null;
+        if(!esVacia()){
+            aux = primero;
+        }
+        return aux;
+    }
     //Metodo para saber si está vacía la lista
     public boolean esVacia(){
         if(primero == null){
