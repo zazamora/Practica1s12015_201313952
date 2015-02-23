@@ -14,7 +14,7 @@ public class Data {
     private String nombre;
     private int cantidad;
     private String imagen;
-    private int ataque;
+    private String ataque;
     private int puntos;
     private String tipo;
     private ListaEnlazada lista = new ListaEnlazada();
@@ -57,11 +57,11 @@ public class Data {
         this.imagen = imagen;
     }
 
-    public int getAtaque() {
+    public String getAtaque() {
         return ataque;
     }
 
-    public void setAtaque(int ataque) {
+    public void setAtaque(String ataque) {
         this.ataque = ataque;
     }
 
@@ -73,9 +73,8 @@ public class Data {
         this.puntos = puntos;
     }
 
-    public Data(String nombre, int cantidad, String imagen, int ataque, int puntos) {
+    public Data(String nombre,String imagen, String ataque, int puntos) {
         this.nombre = nombre;
-        this.cantidad = cantidad;
         this.imagen = imagen;
         this.ataque = ataque;
         this.puntos = puntos;

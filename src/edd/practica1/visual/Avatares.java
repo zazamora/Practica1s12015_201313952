@@ -31,17 +31,41 @@ public class Avatares extends javax.swing.JFrame {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         jPanel1 = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
+        btnAgregar = new javax.swing.JButton();
 
         getContentPane().setLayout(null);
 
         jPanel1.setLayout(null);
+
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        jScrollPane2.setViewportView(jTextArea1);
+
+        jPanel1.add(jScrollPane2);
+        jScrollPane2.setBounds(80, 50, 260, 120);
+
         jScrollPane1.setViewportView(jPanel1);
 
         getContentPane().add(jScrollPane1);
         jScrollPane1.setBounds(30, 30, 480, 280);
 
+        btnAgregar.setText("AGREGAR NUEVO");
+        btnAgregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnAgregar);
+        btnAgregar.setBounds(350, 320, 160, 23);
+
         setBounds(0, 0, 566, 389);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
+        new NuevoAvatar().setVisible(true);
+    }//GEN-LAST:event_btnAgregarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -79,7 +103,10 @@ public class Avatares extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAgregar;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTextArea jTextArea1;
     // End of variables declaration//GEN-END:variables
 }

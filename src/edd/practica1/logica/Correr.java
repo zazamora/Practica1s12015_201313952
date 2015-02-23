@@ -15,10 +15,14 @@ import edd.practica1.visual.Jugador;
  */
 public class Correr {
     public static ListaEnlazada listaJ;
+    public static ListaEnlazada listaP;
+    public static ListaEnlazada listaZ;
     public static Jugador panJugador;
     public static Avatares panAvatar;
     public void comenzar(){
         listaJ = new ListaEnlazada();
+        listaP = new ListaEnlazada();
+        listaZ = new ListaEnlazada();
         panJugador = new Jugador();
         panAvatar = new Avatares();
     }
