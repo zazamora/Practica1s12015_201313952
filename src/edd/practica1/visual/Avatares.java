@@ -6,6 +6,10 @@
 
 package edd.practica1.visual;
 
+import edd.practica1.logica.Correr;
+import edd.practica1.logica.ListaEnlazada;
+import edd.practica1.logica.Nodo;
+
 /**
  *
  * @author Saul
@@ -32,19 +36,19 @@ public class Avatares extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        txtSalida = new javax.swing.JTextArea();
         btnAgregar = new javax.swing.JButton();
 
         getContentPane().setLayout(null);
 
         jPanel1.setLayout(null);
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane2.setViewportView(jTextArea1);
+        txtSalida.setColumns(20);
+        txtSalida.setRows(5);
+        jScrollPane2.setViewportView(txtSalida);
 
         jPanel1.add(jScrollPane2);
-        jScrollPane2.setBounds(80, 50, 260, 120);
+        jScrollPane2.setBounds(10, 10, 460, 260);
 
         jScrollPane1.setViewportView(jPanel1);
 
@@ -65,6 +69,7 @@ public class Avatares extends javax.swing.JFrame {
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
         new NuevoAvatar().setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btnAgregarActionPerformed
 
     /**
@@ -101,12 +106,31 @@ public class Avatares extends javax.swing.JFrame {
             }
         });
     }
-
+    public void ListarAvatares(){
+        String salida = "";
+        ListaEnlazada listaAux;
+        if(Correr.panJugador.tipoA){
+            listaAux = Correr.listaP;
+        }else{
+            listaAux = Correr.listaZ;
+        }
+        if (!listaAux.esVacia()) {
+            Nodo tmp = listaAux.getPrimero();
+            // iterates until the list is finished
+            while (tmp != null) {
+                salida += tmp.getDatos().getNombre() + " " + tmp.getDatos().getAtaque() + " " + tmp.getDatos().getPuntos() + "\n";
+                tmp = tmp.getSiguiente();
+            }
+        }else{
+            System.out.println("La lista esta vacia.");
+        }
+        txtSalida.setText(salida);
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregar;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JTextArea txtSalida;
     // End of variables declaration//GEN-END:variables
 }

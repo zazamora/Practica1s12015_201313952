@@ -102,6 +102,7 @@ public class Jugador extends javax.swing.JFrame {
         datos.setCantidad(Integer.parseInt(txtCantidad.getText()));
         Correr.listaJ.InsertarFrente(datos);
         Correr.listaJ.print();
+        System.out.println("primer listar");
         edd.practica1.logica.Nodo nod = Correr.listaJ.getPrimero();
         datos = new Data();
         datos.setNombre(txt1.getText());
@@ -110,14 +111,16 @@ public class Jugador extends javax.swing.JFrame {
         datos.setNombre(txt2.getText());
         nod.getDatos().getLista().InsertarFrente(datos);
         nod.getDatos().getLista().print();
+        System.out.println("segundo listar");
         this.hide();
-        
+        Correr.panAvatar.setVisible(true);
     }//GEN-LAST:event_btnAceptarActionPerformed
     public void componentStart(){
         txtNombre.setText(null);
         txtCantidad.setText(null);
     }
     public void tipoJugador(boolean tipo){
+        tipoA = tipo;
         if(tipo){
             lblJugador.setText("PLANTA");
             lblIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edd/icons/plant.png")));
@@ -126,6 +129,7 @@ public class Jugador extends javax.swing.JFrame {
             lblIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edd/icons/zombie.png")));
         }
     }
+    
     /**
      * @param args the command line arguments
      */
@@ -160,7 +164,7 @@ public class Jugador extends javax.swing.JFrame {
             }
         });
     }
-
+    public static boolean tipoA;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAceptar;
     private javax.swing.JButton btnAgregar;

@@ -80,6 +80,19 @@ public class ListaEnlazada {
             System.out.println("La lista esta vacia.");
         }
     }
+    //Calcular cuantos hay en la lista
+    public int Cuantos_Elementos(){
+        Nodo aux = null;
+        int i=0;
+        aux = primero;
+ 
+        while(aux != null){
+            aux = aux.getSiguiente();
+            i++;
+        }
+        return i;
+ 
+    }
     //Devolver primero de la lista
     public Nodo getPrimero(){
         Nodo aux = null;

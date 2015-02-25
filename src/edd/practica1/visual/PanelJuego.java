@@ -6,17 +6,25 @@
 
 package edd.practica1.visual;
 
+import edd.practica1.logica.Cola;
+import java.awt.Point;
+import java.util.Queue;
+import java.util.Stack;
+import javax.swing.JButton;
+import javax.swing.TransferHandler;
+
 /**
  *
  * @author Saul
  */
-public class PanelJuego extends javax.swing.JFrame {
+public class PanelJuego extends javax.swing.JFrame implements Runnable{
 
     /**
      * Creates new form PanelJuego
      */
     public PanelJuego() {
         initComponents();
+        comenzar();
     }
 
     /**
@@ -31,62 +39,57 @@ public class PanelJuego extends javax.swing.JFrame {
         jpPlantas = new javax.swing.JPanel();
         jpZombies = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
+        lblPlanta = new javax.swing.JLabel();
+        lblZ = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
+        jmReporte = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
 
         jpPlantas.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-
-        javax.swing.GroupLayout jpPlantasLayout = new javax.swing.GroupLayout(jpPlantas);
-        jpPlantas.setLayout(jpPlantasLayout);
-        jpPlantasLayout.setHorizontalGroup(
-            jpPlantasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 98, Short.MAX_VALUE)
-        );
-        jpPlantasLayout.setVerticalGroup(
-            jpPlantasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 348, Short.MAX_VALUE)
-        );
-
+        jpPlantas.setLayout(null);
         getContentPane().add(jpPlantas);
-        jpPlantas.setBounds(10, 20, 100, 350);
+        jpPlantas.setBounds(10, 20, 64, 320);
 
         jpZombies.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-
-        javax.swing.GroupLayout jpZombiesLayout = new javax.swing.GroupLayout(jpZombies);
-        jpZombies.setLayout(jpZombiesLayout);
-        jpZombiesLayout.setHorizontalGroup(
-            jpZombiesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 98, Short.MAX_VALUE)
-        );
-        jpZombiesLayout.setVerticalGroup(
-            jpZombiesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 348, Short.MAX_VALUE)
-        );
-
+        jpZombies.setLayout(null);
         getContentPane().add(jpZombies);
-        jpZombies.setBounds(660, 20, 100, 350);
+        jpZombies.setBounds(720, 20, 64, 320);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel1.setOpaque(false);
+        jPanel1.setLayout(null);
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 528, Short.MAX_VALUE)
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 348, Short.MAX_VALUE)
-        );
+        lblPlanta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edd/icons/p2.png"))); // NOI18N
+        jPanel1.add(lblPlanta);
+        lblPlanta.setBounds(0, 0, 64, 64);
+
+        lblZ.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edd/icons/z1.png"))); // NOI18N
+        jPanel1.add(lblZ);
+        lblZ.setBounds(510, 0, 64, 64);
 
         getContentPane().add(jPanel1);
-        jPanel1.setBounds(120, 20, 530, 350);
+        jPanel1.setBounds(100, 20, 576, 320);
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edd/icons/pasto3.jpg"))); // NOI18N
+        jLabel1.setOpaque(true);
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(100, 20, 576, 320);
 
         jMenu1.setText("Archivo");
+
+        jmReporte.setText("Reporte");
+        jmReporte.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmReporteActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jmReporte);
+
         jMenuBar1.add(jMenu1);
 
         jMenu2.setText("Editar");
@@ -94,8 +97,12 @@ public class PanelJuego extends javax.swing.JFrame {
 
         setJMenuBar(jMenuBar1);
 
-        pack();
+        setBounds(0, 0, 810, 439);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jmReporteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmReporteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jmReporteActionPerformed
 
     /**
      * @param args the command line arguments
@@ -133,11 +140,43 @@ public class PanelJuego extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JMenuItem jmReporte;
     private javax.swing.JPanel jpPlantas;
     private javax.swing.JPanel jpZombies;
+    private javax.swing.JLabel lblPlanta;
+    private javax.swing.JLabel lblZ;
     // End of variables declaration//GEN-END:variables
+    private Stack pilaP = new Stack();
+    private Cola colaZ = new Cola();
+    private Thread hilo;
+    private int x = 0;
+    private int y = 0;
+    public void comenzar(){
+        hilo = new Thread(this);
+        hilo.start();
+    }
+    public static boolean paroHilo = false;
+    @Override
+    public void run() {
+        while(true){
+            if(paroHilo){
+                break;
+            }
+            try{
+                Thread.sleep(5000);
+                synchronized(this){
+                    x = (int)lblPlanta.getLocation().getX();
+                    y = (int)lblPlanta.getLocation().getY();
+                    lblPlanta.setLocation(new Point(x + 64,y));
+                }
+            }catch(InterruptedException e){
+                e.printStackTrace();
+            }
+        }
+    }
 }

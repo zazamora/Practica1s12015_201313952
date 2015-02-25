@@ -20,6 +20,7 @@ public class NuevoAvatar extends javax.swing.JFrame {
      */
     public NuevoAvatar() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -40,6 +41,7 @@ public class NuevoAvatar extends javax.swing.JFrame {
         txtAtaque = new javax.swing.JTextField();
         txtPuntos = new javax.swing.JTextField();
         btnCrear = new javax.swing.JButton();
+        txtImagen = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(null);
@@ -79,17 +81,22 @@ public class NuevoAvatar extends javax.swing.JFrame {
         });
         getContentPane().add(btnCrear);
         btnCrear.setBounds(200, 190, 150, 30);
+        getContentPane().add(txtImagen);
+        txtImagen.setBounds(100, 160, 190, 20);
 
-        pack();
+        setBounds(0, 0, 388, 272);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearActionPerformed
-        Data datos = new Data();
-        datos.setNombre(txtNombre.getText());
-        datos.setAtaque(txtAtaque.getText());
-        datos.setPuntos(Integer.parseInt(txtPuntos.getText()));
-        Correr.listaP.InsertarFinal(datos);
+        Data datos = new Data(txtNombre.getText(),txtImagen.getText(),txtAtaque.getText(),Integer.parseInt(txtPuntos.getText()));
+        if(Correr.panJugador.tipoA){
+            Correr.listaP.InsertarFinal(datos);
+        }else{
+            Correr.listaZ.InsertarFinal(datos);
+        }
         this.dispose();
+        Correr.panAvatar.setVisible(true);
+        Correr.panAvatar.ListarAvatares();
     }//GEN-LAST:event_btnCrearActionPerformed
 
     /**
@@ -135,6 +142,7 @@ public class NuevoAvatar extends javax.swing.JFrame {
     private javax.swing.JLabel lblNombre;
     private javax.swing.JLabel lblPuntos;
     private javax.swing.JTextField txtAtaque;
+    private javax.swing.JTextField txtImagen;
     private javax.swing.JTextField txtNombre;
     private javax.swing.JTextField txtPuntos;
     // End of variables declaration//GEN-END:variables
