@@ -96,7 +96,10 @@ public class Inicio extends javax.swing.JFrame {
     }//GEN-LAST:event_btnPlantaActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        Correr.listaJ.print();
+       newCorrer.generarArchivo("listaJ.txt");
+       newCorrer.archivoLista(0);
+       newCorrer.generarGraph("listaJ");
+       
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void btnZombieActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnZombieActionPerformed

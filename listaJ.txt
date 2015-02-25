@@ -1,0 +1,6 @@
+digraph Grapho
+{
+Zombieneitor->Plantita;
+Zombieneitor->dato1
+dato1->dato2;
+}
