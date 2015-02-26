@@ -34,4 +34,7 @@ public class Nodo {
     public Data getDatos(){
         return datos;
     }
+    public void setDatos(Data datos){
+        this.datos = datos;
+    }
 }

@@ -18,6 +18,25 @@ public class Data {
     private int puntos;
     private String tipo;
     private ListaEnlazada lista = new ListaEnlazada();
+    private String columna;
+    private int fila;
+
+    public String getColumna() {
+        return columna;
+    }
+
+    public void setColumna(String columna) {
+        this.columna = columna;
+    }
+
+    public int getFila() {
+        return fila;
+    }
+
+    public void setFila(int fila) {
+        this.fila = fila;
+    }
+    
     public ListaEnlazada getLista(){
         return lista;
     }

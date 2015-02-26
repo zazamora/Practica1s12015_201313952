@@ -1,6 +1,0 @@
-digraph Grapho
-{
-Plantit->Plantineitor;
-Plantineitor->Planton;
-Planton->Plantitoso;
-}

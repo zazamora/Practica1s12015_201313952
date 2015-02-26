@@ -37,8 +37,9 @@ public class Correr {
     }
     public void generarGraph(String nombre){
         try{
+            String path = "C:\\Users\\Saul\\Documents\\NetBeansProjects\\[EDD]Practica1_201313952\\";
             String dotPath = "C:\\Program Files (x86)\\Graphviz2.38\\bin\\dot.exe";
-            String fileInputPath = "C:\\Users\\Saul\\Desktop\\Graphs\\" + nombre + ".txt";
+            String fileInputPath = path + nombre + ".txt";
             String fileOutputPath = "C:\\Users\\Saul\\Desktop\\" + nombre + ".jpg";
             String tParam = "-Tjpg";
             String tOParam = "-o";
@@ -79,16 +80,20 @@ public class Correr {
             while(temp != null){
                 if(temp.getSiguiente()!= null){
                     print.println(temp.getDatos().getNombre() + "->" + temp.getSiguiente().getDatos().getNombre() + ";");
-                    if(tipo == 0){
-                        if(!temp.getDatos().getLista().esVacia()){
-                            Nodo aux = temp.getDatos().getLista().getPrimero();
-                            print.println(temp.getDatos().getNombre() + "->" + aux.getDatos().getNombre());
-                            while(aux!=null){
-                                if(aux.getSiguiente()!=null){
-                                    print.println(aux.getDatos().getNombre() + "->" + aux.getSiguiente().getDatos().getNombre() + ";");
-                                }
-                                aux = aux.getSiguiente();
+                }else{
+                    print.println(temp.getDatos().getNombre()+ ";");
+                }
+                if(tipo == 0){
+                    if(!temp.getDatos().getLista().esVacia()){
+                        Nodo aux = temp.getDatos().getLista().getPrimero();
+                        print.println(temp.getDatos().getNombre() + "->" + aux.getDatos().getNombre());
+                        while(aux!=null){
+                            if(aux.getSiguiente()!=null){
+                                print.println(aux.getDatos().getNombre() + "->" + aux.getSiguiente().getDatos().getNombre() + ";");
+                            }else{
+                                print.println(aux.getDatos().getNombre() + ";");
                             }
+                            aux = aux.getSiguiente();
                         }
                     }
                 }

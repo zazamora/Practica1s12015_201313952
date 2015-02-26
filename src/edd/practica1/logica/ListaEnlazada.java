@@ -109,4 +109,9 @@ public class ListaEnlazada {
             return false;
         }
     }
+    
+    //Vacia la lista
+    public void vaciarLista(){
+        primero = null;
+    }
 }

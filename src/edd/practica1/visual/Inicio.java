@@ -74,6 +74,11 @@ public class Inicio extends javax.swing.JFrame {
         btnComenzar.setBounds(70, 180, 130, 23);
 
         btnEliminar.setText("Eliminar Datos");
+        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnEliminar);
         btnEliminar.setBounds(210, 180, 140, 23);
 
@@ -107,6 +112,12 @@ public class Inicio extends javax.swing.JFrame {
         Correr.panJugador.componentStart();
         Correr.panJugador.tipoJugador(false);
     }//GEN-LAST:event_btnZombieActionPerformed
+
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+        Correr.listaJ.vaciarLista();
+        Correr.listaP.vaciarLista();
+        Correr.listaZ.vaciarLista();
+    }//GEN-LAST:event_btnEliminarActionPerformed
     
     private void componentStart(){
         newCorrer = new Correr();

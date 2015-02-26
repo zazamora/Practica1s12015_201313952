@@ -40,8 +40,6 @@ public class Jugador extends javax.swing.JFrame {
         txtCantidad = new javax.swing.JTextField();
         btnAgregar = new javax.swing.JButton();
         btnAceptar = new javax.swing.JButton();
-        txt1 = new javax.swing.JTextField();
-        txt2 = new javax.swing.JTextField();
 
         getContentPane().setLayout(null);
 
@@ -76,6 +74,11 @@ public class Jugador extends javax.swing.JFrame {
 
         btnAgregar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         btnAgregar.setLabel("AGREGAR MAS CAMPOS");
+        btnAgregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregarActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnAgregar);
         btnAgregar.setBounds(30, 250, 170, 30);
 
@@ -88,20 +91,13 @@ public class Jugador extends javax.swing.JFrame {
         });
         getContentPane().add(btnAceptar);
         btnAceptar.setBounds(220, 250, 120, 30);
-        getContentPane().add(txt1);
-        txt1.setBounds(30, 100, 90, 20);
-        getContentPane().add(txt2);
-        txt2.setBounds(130, 100, 90, 20);
 
         setBounds(0, 0, 416, 339);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
-        Data datos = new Data();
-        datos.setNombre(txtNombre.getText());
-        datos.setCantidad(Integer.parseInt(txtCantidad.getText()));
-        Correr.listaJ.InsertarFrente(datos);
-        Correr.listaJ.print();
+        if(!guardado)guardarDatos();
+        /*Correr.listaJ.print();
         System.out.println("primer listar");
         edd.practica1.logica.Nodo nod = Correr.listaJ.getPrimero();
         datos = new Data();
@@ -111,10 +107,22 @@ public class Jugador extends javax.swing.JFrame {
         datos.setNombre(txt2.getText());
         nod.getDatos().getLista().InsertarFrente(datos);
         nod.getDatos().getLista().print();
-        System.out.println("segundo listar");
+        System.out.println("segundo listar");*/
         this.hide();
         Correr.panAvatar.setVisible(true);
     }//GEN-LAST:event_btnAceptarActionPerformed
+    private void guardarDatos(){
+        Data datos = new Data();
+        datos.setNombre(txtNombre.getText());
+        datos.setCantidad(Integer.parseInt(txtCantidad.getText()));
+        Correr.listaJ.InsertarFrente(datos);
+        guardado = true;
+    }
+    
+    private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
+        guardarDatos();
+        new Campos().setVisible(true);
+    }//GEN-LAST:event_btnAgregarActionPerformed
     public void componentStart(){
         txtNombre.setText(null);
         txtCantidad.setText(null);
@@ -165,6 +173,7 @@ public class Jugador extends javax.swing.JFrame {
         });
     }
     public static boolean tipoA;
+    private boolean guardado = false;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAceptar;
     private javax.swing.JButton btnAgregar;
@@ -172,8 +181,6 @@ public class Jugador extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel lblIcon;
     private javax.swing.JLabel lblJugador;
-    private javax.swing.JTextField txt1;
-    private javax.swing.JTextField txt2;
     private javax.swing.JTextField txtCantidad;
     private javax.swing.JTextField txtNombre;
     // End of variables declaration//GEN-END:variables

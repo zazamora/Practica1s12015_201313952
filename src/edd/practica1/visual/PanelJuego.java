@@ -7,9 +7,8 @@
 package edd.practica1.visual;
 
 import edd.practica1.logica.Cola;
+import edd.practica1.logica.Pila;
 import java.awt.Point;
-import java.util.Queue;
-import java.util.Stack;
 import javax.swing.JButton;
 import javax.swing.TransferHandler;
 
@@ -151,7 +150,7 @@ public class PanelJuego extends javax.swing.JFrame implements Runnable{
     private javax.swing.JLabel lblPlanta;
     private javax.swing.JLabel lblZ;
     // End of variables declaration//GEN-END:variables
-    private Stack pilaP = new Stack();
+    private Pila pilaP = new Pila();
     private Cola colaZ = new Cola();
     private Thread hilo;
     private int x = 0;
@@ -168,7 +167,7 @@ public class PanelJuego extends javax.swing.JFrame implements Runnable{
                 break;
             }
             try{
-                Thread.sleep(5000);
+                Thread.sleep(500);
                 synchronized(this){
                     x = (int)lblPlanta.getLocation().getX();
                     y = (int)lblPlanta.getLocation().getY();
