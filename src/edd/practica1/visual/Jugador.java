@@ -115,6 +115,7 @@ public class Jugador extends javax.swing.JFrame {
         Data datos = new Data();
         datos.setNombre(txtNombre.getText());
         datos.setCantidad(Integer.parseInt(txtCantidad.getText()));
+        datos.setTipo(tipoA);
         Correr.listaJ.InsertarFrente(datos);
         guardado = true;
     }

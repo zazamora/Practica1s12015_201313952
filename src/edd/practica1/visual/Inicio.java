@@ -70,6 +70,11 @@ public class Inicio extends javax.swing.JFrame {
         lblZombies.setBounds(250, 10, 130, 130);
 
         btnComenzar.setText("Comenzar Juego");
+        btnComenzar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnComenzarActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnComenzar);
         btnComenzar.setBounds(70, 180, 130, 23);
 
@@ -118,6 +123,12 @@ public class Inicio extends javax.swing.JFrame {
         Correr.listaP.vaciarLista();
         Correr.listaZ.vaciarLista();
     }//GEN-LAST:event_btnEliminarActionPerformed
+
+    private void btnComenzarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnComenzarActionPerformed
+        PanelJuego juego = new PanelJuego();
+        juego.setVisible(true);
+        juego.comenzar();
+    }//GEN-LAST:event_btnComenzarActionPerformed
     
     private void componentStart(){
         newCorrer = new Correr();

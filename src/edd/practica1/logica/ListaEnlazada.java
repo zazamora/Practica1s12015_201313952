@@ -101,6 +101,53 @@ public class ListaEnlazada {
         }
         return aux;
     }
+    
+    //Devolver el ultimo de la lista
+    public Nodo getUltimo(){
+        Nodo elemen = null;
+        Nodo aux = null;
+        if (!esVacia()){
+            aux = primero;
+            while(aux.getSiguiente() != null)  aux = aux.getSiguiente();
+                elemen = aux;
+        }
+        return elemen;
+    }
+    //Buscar por tipo
+    public Nodo getBusqueda(boolean tipo){
+        Nodo aux = primero;
+        Nodo temp = null;
+        if(!esVacia()){
+            while(aux != null){
+                if(aux.getDatos().getTipo() == tipo){
+                    temp = aux;
+                    break;
+                }
+                aux = aux.getSiguiente();
+            }
+        }
+        return temp;
+    }
+    //Obtener por posicion
+    public Nodo buscarPosicion(int pos){
+ 
+        Nodo aux, temp = null;
+        int cont=1;
+ 
+        aux=primero;
+        while(aux!=null){
+            if (pos == cont){
+                temp = aux;
+                break;
+            }
+            aux = aux.getSiguiente();
+            cont++;
+            
+        }
+        return temp;
+    }
+    
+    
     //Metodo para saber si está vacía la lista
     public boolean esVacia(){
         if(primero == null){

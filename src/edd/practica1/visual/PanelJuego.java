@@ -6,9 +6,13 @@
 
 package edd.practica1.visual;
 
+import edd.practica1.logica.Archivo;
 import edd.practica1.logica.Cola;
+import edd.practica1.logica.Correr;
+import edd.practica1.logica.Nodo;
 import edd.practica1.logica.Pila;
 import java.awt.Point;
+import java.util.Random;
 import javax.swing.JButton;
 import javax.swing.TransferHandler;
 
@@ -23,7 +27,7 @@ public class PanelJuego extends javax.swing.JFrame implements Runnable{
      */
     public PanelJuego() {
         initComponents();
-        comenzar();
+        //comenzar();
     }
 
     /**
@@ -100,7 +104,9 @@ public class PanelJuego extends javax.swing.JFrame implements Runnable{
     }// </editor-fold>//GEN-END:initComponents
 
     private void jmReporteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmReporteActionPerformed
-        // TODO add your handling code here:
+        archiv.generarArchivo("graP.txt");
+        archiv.archivoPila(pilaP);
+        archiv.generarGraph("graP");
     }//GEN-LAST:event_jmReporteActionPerformed
 
     /**
@@ -137,7 +143,7 @@ public class PanelJuego extends javax.swing.JFrame implements Runnable{
             }
         });
     }
-
+    private Archivo archiv = new Archivo();
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
@@ -153,6 +159,12 @@ public class PanelJuego extends javax.swing.JFrame implements Runnable{
     private Pila pilaP = new Pila();
     private Cola colaZ = new Cola();
     private Thread hilo;
+    private Random azar = new Random();
+    private int porAzar = 0;
+    private int cantidadP = Correr.listaJ.getBusqueda(true).getDatos().getCantidad();
+    private int auxP = 0;
+    //private int cantidadZ = Correr.listaJ.getBusqueda(false).getDatos().getCantidad();
+    private int auxZ = 0;
     private int x = 0;
     private int y = 0;
     public void comenzar(){
@@ -167,11 +179,15 @@ public class PanelJuego extends javax.swing.JFrame implements Runnable{
                 break;
             }
             try{
-                Thread.sleep(500);
+                Thread.sleep(5000);
                 synchronized(this){
-                    x = (int)lblPlanta.getLocation().getX();
-                    y = (int)lblPlanta.getLocation().getY();
-                    lblPlanta.setLocation(new Point(x + 64,y));
+//                    x = (int)lblPlanta.getLocation().getX();
+//                    y = (int)lblPlanta.getLocation().getY();
+//                    lblPlanta.setLocation(new Point(x + 64,y));
+                    porAzar = azar.nextInt(Correr.listaP.Cuantos_Elementos()) + 1;
+                    Nodo aux = Correr.listaP.buscarPosicion(porAzar);
+                    pilaP.push(aux.getDatos());
+                    System.out.println("Entro planta a la pila");
                 }
             }catch(InterruptedException e){
                 e.printStackTrace();

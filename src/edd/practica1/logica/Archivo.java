@@ -6,8 +6,6 @@
 
 package edd.practica1.logica;
 
-import edd.practica1.visual.Avatares;
-import edd.practica1.visual.Jugador;
 import java.awt.Desktop;
 import java.io.IOException;
 import java.util.logging.Level;
@@ -17,24 +15,10 @@ import java.util.logging.Logger;
  *
  * @author Saul
  */
-public class Correr {
-    public static ListaEnlazada listaJ;
-    public static ListaEnlazada listaP;
-    public static ListaEnlazada listaZ;
-    public static Jugador panJugador;
-    public static Avatares panAvatar;
-    
+public class Archivo {
     java.io.File fichero;
     java.io.FileWriter escribirFichero;
     java.io.PrintWriter print;
-    
-    public void comenzar(){
-        listaJ = new ListaEnlazada();
-        listaP = new ListaEnlazada();
-        listaZ = new ListaEnlazada();
-        panJugador = new Jugador();
-        panAvatar = new Avatares();
-    }
     public void generarGraph(String nombre){
         try{
             String path = "C:\\Users\\Saul\\Documents\\NetBeansProjects\\[EDD]Practica1_201313952\\";
@@ -62,44 +46,7 @@ public class Correr {
             print = new java.io.PrintWriter(escribirFichero);
             
         } catch (IOException ex) {
-            Logger.getLogger(Correr.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-    public void archivoLista(int tipo){
-        ListaEnlazada listaAux = null;
-        if(tipo == 0){
-            listaAux = listaJ;
-        }else if(tipo == 1){
-            listaAux = listaP;
-        }else if(tipo == 2){
-            listaAux = listaZ;
-        }
-        if(!listaAux.esVacia()){
-            Nodo temp = listaAux.getPrimero();
-            cabecera();
-            while(temp != null){
-                if(temp.getSiguiente()!= null){
-                    print.println(temp.getDatos().getNombre() + "->" + temp.getSiguiente().getDatos().getNombre() + ";");
-                }else{
-                    print.println(temp.getDatos().getNombre()+ ";");
-                }
-                if(tipo == 0){
-                    if(!temp.getDatos().getLista().esVacia()){
-                        Nodo aux = temp.getDatos().getLista().getPrimero();
-                        print.println(temp.getDatos().getNombre() + "->" + aux.getDatos().getNombre());
-                        while(aux!=null){
-                            if(aux.getSiguiente()!=null){
-                                print.println(aux.getDatos().getNombre() + "->" + aux.getSiguiente().getDatos().getNombre() + ";");
-                            }else{
-                                print.println(aux.getDatos().getNombre() + ";");
-                            }
-                            aux = aux.getSiguiente();
-                        }
-                    }
-                }
-                temp = temp.getSiguiente();
-            }
-            cerrar();
+            Logger.getLogger(Archivo.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     private void cabecera(){

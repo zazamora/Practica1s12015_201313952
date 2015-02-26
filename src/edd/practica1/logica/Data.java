@@ -16,7 +16,7 @@ public class Data {
     private String imagen;
     private String ataque;
     private int puntos;
-    private String tipo;
+    private boolean tipo;
     private ListaEnlazada lista = new ListaEnlazada();
     private String columna;
     private int fila;
@@ -40,11 +40,11 @@ public class Data {
     public ListaEnlazada getLista(){
         return lista;
     }
-    public String getTipo() {
+    public boolean getTipo() {
         return tipo;
     }
 
-    public void setTipo(String tipo) {
+    public void setTipo(boolean tipo) {
         this.tipo = tipo;
     }
     
