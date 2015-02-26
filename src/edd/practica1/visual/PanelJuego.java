@@ -48,6 +48,7 @@ public class PanelJuego extends javax.swing.JFrame implements Runnable{
         jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
         jmReporte = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
 
@@ -86,7 +87,15 @@ public class PanelJuego extends javax.swing.JFrame implements Runnable{
 
         jMenu1.setText("Archivo");
 
-        jmReporte.setText("Reporte");
+        jMenuItem1.setText("Reporte Jugadores");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem1);
+
+        jmReporte.setText("Reporte Pila");
         jmReporte.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jmReporteActionPerformed(evt);
@@ -109,6 +118,12 @@ public class PanelJuego extends javax.swing.JFrame implements Runnable{
         archiv.archivoPila(pilaP);
         archiv.generarGraph("graP");
     }//GEN-LAST:event_jmReporteActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        archiv.generarArchivo("listaJ.txt");
+        archiv.archivoLista(0);
+        archiv.generarGraph("listaJ");
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -150,6 +165,7 @@ public class PanelJuego extends javax.swing.JFrame implements Runnable{
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JMenuItem jmReporte;
     private javax.swing.JPanel jpPlantas;

@@ -96,8 +96,11 @@ public class Jugador extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
-        //if(!guardado)
-            guardarDatos();
+        if(guardado == 0){
+            guardarDatos(0);
+        }else if(guardado == 1){
+            guardado = 0;
+        }
         /*Correr.listaJ.print();
         System.out.println("primer listar");
         edd.practica1.logica.Nodo nod = Correr.listaJ.getPrimero();
@@ -112,18 +115,18 @@ public class Jugador extends javax.swing.JFrame {
         this.hide();
         Correr.panAvatar.setVisible(true);
     }//GEN-LAST:event_btnAceptarActionPerformed
-    private void guardarDatos(){
+    private void guardarDatos(int a){
         Data datos = new Data();
         datos.setNombre(txtNombre.getText());
         datos.setCantidad(Integer.parseInt(txtCantidad.getText()));
         if(tipoA)datos.setTipo(1);
         else datos.setTipo(2);
         Correr.listaJ.InsertarFrente(datos);
-        guardado = true;
+        guardado = a;
     }
     
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
-        guardarDatos();
+        guardarDatos(1);
         new Campos().setVisible(true);
     }//GEN-LAST:event_btnAgregarActionPerformed
     public void componentStart(){
@@ -176,7 +179,7 @@ public class Jugador extends javax.swing.JFrame {
         });
     }
     public static boolean tipoA;
-    private boolean guardado = false;
+    private int guardado = 0;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAceptar;
     private javax.swing.JButton btnAgregar;
