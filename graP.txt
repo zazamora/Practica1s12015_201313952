@@ -1,5 +1,4 @@
 digraph Grapho
 {
-p2s->p1;
-p1->p3;
+a4->a12;
 }

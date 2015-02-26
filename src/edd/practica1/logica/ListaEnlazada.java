@@ -114,7 +114,7 @@ public class ListaEnlazada {
         return elemen;
     }
     //Buscar por tipo
-    public Nodo getBusqueda(boolean tipo){
+    public Nodo getBusqueda(int tipo){
         Nodo aux = primero;
         Nodo temp = null;
         if(!esVacia()){

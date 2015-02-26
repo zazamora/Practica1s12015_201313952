@@ -125,6 +125,7 @@ public class Inicio extends javax.swing.JFrame {
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void btnComenzarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnComenzarActionPerformed
+        Correr.listaJ.print();
         PanelJuego juego = new PanelJuego();
         juego.setVisible(true);
         juego.comenzar();

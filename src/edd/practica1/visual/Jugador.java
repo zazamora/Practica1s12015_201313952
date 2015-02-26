@@ -96,7 +96,8 @@ public class Jugador extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
-        if(!guardado)guardarDatos();
+        //if(!guardado)
+            guardarDatos();
         /*Correr.listaJ.print();
         System.out.println("primer listar");
         edd.practica1.logica.Nodo nod = Correr.listaJ.getPrimero();
@@ -115,7 +116,8 @@ public class Jugador extends javax.swing.JFrame {
         Data datos = new Data();
         datos.setNombre(txtNombre.getText());
         datos.setCantidad(Integer.parseInt(txtCantidad.getText()));
-        datos.setTipo(tipoA);
+        if(tipoA)datos.setTipo(1);
+        else datos.setTipo(2);
         Correr.listaJ.InsertarFrente(datos);
         guardado = true;
     }

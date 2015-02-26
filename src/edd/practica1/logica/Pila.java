@@ -20,13 +20,15 @@ public class Pila{
     //Ingresa elemento a la pila
     public void push(Data dato){
         Nodo nuevo = new Nodo(dato);
-        if(fin == null){
-            fin = nuevo;
-        }else{
-            nuevo.setSiguiente(fin);
-            fin = nuevo;
+        if(dato != null){
+            if(fin == null){
+                fin = nuevo;
+            }else{
+                nuevo.setSiguiente(fin);
+                fin = nuevo;
+            }
+            size++;
         }
-        size++;
     }
     //Retorna elemento de la pila
     public Data pop(){

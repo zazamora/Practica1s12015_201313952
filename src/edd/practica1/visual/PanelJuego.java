@@ -27,6 +27,7 @@ public class PanelJuego extends javax.swing.JFrame implements Runnable{
      */
     public PanelJuego() {
         initComponents();
+        this.setLocationRelativeTo(null);
         //comenzar();
     }
 
@@ -161,9 +162,9 @@ public class PanelJuego extends javax.swing.JFrame implements Runnable{
     private Thread hilo;
     private Random azar = new Random();
     private int porAzar = 0;
-    private int cantidadP = Correr.listaJ.getBusqueda(true).getDatos().getCantidad();
+    private int cantidadP = Correr.listaJ.getBusqueda(1).getDatos().getCantidad();
     private int auxP = 0;
-    //private int cantidadZ = Correr.listaJ.getBusqueda(false).getDatos().getCantidad();
+    private int cantidadZ = Correr.listaJ.getBusqueda(2).getDatos().getCantidad();
     private int auxZ = 0;
     private int x = 0;
     private int y = 0;
@@ -185,6 +186,7 @@ public class PanelJuego extends javax.swing.JFrame implements Runnable{
 //                    y = (int)lblPlanta.getLocation().getY();
 //                    lblPlanta.setLocation(new Point(x + 64,y));
                     porAzar = azar.nextInt(Correr.listaP.Cuantos_Elementos()) + 1;
+                    System.out.println("el dato es: " + porAzar);
                     Nodo aux = Correr.listaP.buscarPosicion(porAzar);
                     pilaP.push(aux.getDatos());
                     System.out.println("Entro planta a la pila");
